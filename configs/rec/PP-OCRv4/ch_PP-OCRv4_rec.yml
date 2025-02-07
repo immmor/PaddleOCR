@@ -108,7 +108,7 @@ Train:
     is_training: True
   loader:
     shuffle: true
-    batch_size_per_card: 2
+    batch_size_per_card: *bs
     drop_last: true
     num_workers: 2
 Eval:
