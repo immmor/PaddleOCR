@@ -8,7 +8,7 @@ Global:
   save_epoch_step: 10
   eval_batch_step: [0, 2000]
   cal_metric_during_train: true
-  pretrained_model:
+  pretrained_model: /content/PaddleOCR/pre_train_model/ch_PP-OCRv4_rec_train/student.pdparams
   checkpoints:
   save_inference_dir:
   use_visualdl: false
@@ -79,7 +79,7 @@ Train:
     data_dir: ./train_data/
     ext_op_transform_idx: 1
     label_file_list:
-    - ./train_data/train_list.txt
+    - ./train_data/rec/train.txt
     transforms:
     - DecodeImage:
         img_mode: BGR
@@ -102,21 +102,21 @@ Train:
   sampler:
     name: MultiScaleSampler
     scales: [[320, 32], [320, 48], [320, 64]]
-    first_bs: &bs 192
+    first_bs: &bs 2
     fix_bs: false
     divided_factor: [8, 16] # w, h
     is_training: True
   loader:
     shuffle: true
-    batch_size_per_card: *bs
+    batch_size_per_card: 2
     drop_last: true
-    num_workers: 8
+    num_workers: 2
 Eval:
   dataset:
     name: SimpleDataSet
     data_dir: ./train_data
     label_file_list:
-    - ./train_data/val_list.txt
+    - ./train_data/rec/val.txt
     transforms:
     - DecodeImage:
         img_mode: BGR
@@ -135,5 +135,5 @@ Eval:
   loader:
     shuffle: false
     drop_last: false
-    batch_size_per_card: 128
-    num_workers: 4
+    batch_size_per_card: 2
+    num_workers: 2
