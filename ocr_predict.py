@@ -3,7 +3,7 @@ import cv2
 
 # 创建 OCR 模型实例（lang参数指定识别
 #ocr = PaddleOCR(det_model_dir='inference_model/ori_model/ch_PP-OCRv4_det_infer', rec_model_dir='inference_model/ori_model/ch_PP-OCRv4_rec_infer', use_angle_cls=False,use_gpu=True)
-ocr = PaddleOCR(det_model_dir='inference_model/det/student', rec_model_dir='inference_model/rec', use_angle_cls=False,use_gpu=True)
+ocr = PaddleOCR(det_model_dir='inference_model/det/Student', rec_model_dir='inference_model/rec', use_angle_cls=False,use_gpu=True)
 # 读取图像  
 image_path = 'label_data/001.jpg'  # 替换为你的图像路径  
 img = cv2.imread(image_path)  
